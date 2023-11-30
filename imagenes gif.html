@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body{
+            background: linear-gradient(to right, hwb(182 45% 16% / 0.87), hsla(158, 61%, 70%, 0.884),hsla(2, 67%, 78%, 0.884) );
+        }
+    </style>
+</head>
+<script language="JavaScript1.1">
+
+var slideimages=new Array()
+var slidelinks=new Array()
+function slideshowimages(){
+for (i=0;i<slideshowimages.arguments.length;i++){
+slideimages[i]=new Image()
+slideimages[i].src=slideshowimages.arguments[i]
+}
+}
+
+function slideshowlinks(){
+for (i=0;i<slideshowlinks.arguments.length;i++)
+slidelinks[i]=slideshowlinks.arguments[i]
+}
+
+function gotoshow(){
+if (!window.winslide||winslide.closed)
+winslide=window.open(slidelinks[whichlink])
+else
+winslide.location=slidelinks[whichlink]
+winslide.focus()
+}
+
+//-->
+</script>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<center><a href="javascript:gotoshow()"><img src="popo.jpg" name="slide" border=0 width=1000 height=600></a></center>
+<script>
+<!--
+
+//aqui se configura en la primera linea las direcciones de las imagenes, y en la segunda la de sus respectivos links
+slideshowimages("imgviolencia/1.jpg","imgviolencia/2.jpg","imgviolencia/3.png","imgviolencia/4.jpg","imgviolencia/5.jpg", "imgviolencia/6.png",)
+slideshowlinks("menus.html","virus1.html","sumas.html","Division.html")
+
+//configura la velocidad a la que quieras que se cambien las imagenes con sus links
+var slideshowspeed=500
+
+var whichlink=0
+var whichimage=0
+function slideit(){
+if (!document.images)
+return
+document.images.slide.src=slideimages[whichimage].src
+whichlink=whichimage
+if (whichimage<slideimages.length-1)
+whichimage++
+else
+whichimage=0
+setTimeout("slideit()",slideshowspeed)
+}
+slideit()
+
+//-->
+</script>
